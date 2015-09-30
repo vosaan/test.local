@@ -1,8 +1,7 @@
-
 <?
 	session_start();
 	require_once("model/model.php");
-	
+	echo $_SERVER['DOCUMENT_ROOT'];
 	$errors = array();
 
 	if(isset($_GET['action'])){
