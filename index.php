@@ -1,7 +1,9 @@
 <?
 	session_start();
+	//include_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
+	include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
+	$smarty->display('header.html');
 	require_once("model/model.php");
-	echo $_SERVER['DOCUMENT_ROOT'];
 	$errors = array();
 
 	if(isset($_GET['action'])){
@@ -13,7 +15,7 @@
 	if(isset($_SESSION['isLogin'])){
 		include('view/mainpage.php');
 	} else if($action == ""){
-		include('view/login.php');
+		$smarty->display('login.html');
 	}
 	
 	if($action == "auth"){
@@ -36,5 +38,5 @@
 		logout();
 		header("Location: /");
 	}
-
+	$smarty->display('header.html');
 ?>
