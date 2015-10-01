@@ -63,4 +63,13 @@
 			return false;
 		}
 	}
+	
+	function setFeedback($userid, $title, $message, $link){
+		if(isset($userid) && isset($title) && isset($message) &&  isset($datetime)){
+			$sql = "INSET INTO feedbacks (userid, title, message, datetime) VALUES ('%d', '%s', '%s')";
+			$query = sprintf($sql, $userid, $title, $message);
+			$result = mysqli_query($link, $query) or die(mysqli_error($link));
+			return result;
+		}
+	}	
 ?>

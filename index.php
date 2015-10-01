@@ -45,11 +45,11 @@
 		logout();
 		$smarty->display('login.html');
 	} else if($action == "feedback"){
-		if(isset($_POST['title']) &&
-			 isset($_POST['message']) && 
-			 isset($_POST['datetime'])){
-				print_r($_POST);
-			 }
+			if(isset($_POST['title']) &&
+						 isset($_POST['message']) &&
+						 isset($_SESSION['id'])){
+							setFeedback($_POST['title'], $_POST['message'], $_SESSION['id'], $link);	
+			}					 
 	}
 		
 	if($page == "weather"){
