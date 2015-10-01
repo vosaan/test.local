@@ -1,4 +1,5 @@
 <?
+	ob_start();
 	session_start();
 	include_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
 	include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
@@ -14,8 +15,8 @@
 	}
 
 	if(isset($_SESSION['isLogin'])){
-		echo "login";
-		print_r($_SESSION);
+		/*echo "login";
+		print_r($_SESSION);*/
 	} else if($action == ""){
 		$smarty->display('login.html');
 	}
@@ -23,7 +24,7 @@
 	if($action == "auth"){
 		if(isset($_POST['auth_form_login']) && isset($_POST['auth_form_password'])){
 			getFromDB($_POST['auth_form_login'], $_POST['auth_form_password'], $link);
-			//header("Location: /");
+			header("Location: /");
 		}
 	} else if($action == "reg"){
 		$smarty->display('registration.html');
@@ -34,7 +35,6 @@
 						 $_POST['reg_form_password'],
 						 $_POST['reg_form_password_confirm'],
 						 $link);
-			//header("Location: /");
 		}
 	} else if($action == "logout"){
 		logout();

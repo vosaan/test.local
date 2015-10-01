@@ -24,6 +24,7 @@
 					$_SESSION['username'] = $login;
 					return $_SESSION['isLogin'] = true;
 				} else {
+					echo "No!";
 					return false;
 				}
 			}
@@ -36,7 +37,7 @@
 	function logout(){
 		$_SESSION = array();
 		session_destroy();
-		return true;
+		return header('Location: /');
 	}
 
 	function registration($login, $password, $password_confirm, $link){

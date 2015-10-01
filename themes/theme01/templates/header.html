@@ -11,16 +11,18 @@
 		<header>
 			<div class = "header_content">
 				<div class = "header_content_left">
-					menu
+					{if isset($login) && isset($mainmenu)}
+						{foreach $mainmenu as $key=>$value}
+							<li><a href = "index.php{$value}">{$key}</a></li>
+						{/foreach}
+					{/if}
 				</div>
 				<div class = "header_content_right">
-					user info
+					{if isset($login)}
+						<a href = "index.php?action=logout">Logout</a>
+					{/if}
 				</div>
 			</div>
 		</header>
 		<div class = "page_content">
 		<!-- End of header -->
-						{if isset($login)}
-					aaaa
-				{/if}
-				{$username}
