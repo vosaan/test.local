@@ -4,6 +4,7 @@
     margin: 0px;
     padding: 0px;
 		font-family: Verdana;
+		font-size: 14px;
   }
 	
 	h2{
@@ -31,9 +32,44 @@
 				background-color: inherit;
 				height: inherit;
 			}
+			
+			.header_content a{
+				color: #fff;
+				text-decoration: none;
+			}			
+			
+			.header_content a:hover{
+				text-decoration: underline;
+			}
+			
+			.header_content_left, .header_content_right{
+				margin-top: 17px;
+				float: left;
+			}
+
+			.header_content_left{
+				width: 700px;
+				background-color: red;
+			}			
+			
+			.header_content_right{
+				width: 260px;
+				background-color: green;
+			}
 	
   footer {
     height: 100px;
     margin-top: -100px;
     background: #654321;
   }
+	
+/*										*/	
+
+.login_form, .reg_form{
+	margin: 0 auto;
+	border: 1px solid #000;
+	border-radius: 5px;
+	width: 200px;
+	margin-top: 100px;
+	padding: 20px;
+}

@@ -1,4 +1,9 @@
 <?php
+include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
+if (isset($_SESSION['isLogin'])){
+	$smarty->assign('login', $_SESSION['isLogin']);
+	$smarty->assign('username', $_SESSION['username']);
+}
 	/*include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php'); 
 	
 	$stylepath = $_SERVER['DOCUMENT_ROOT'].'/themes/theme01/templates/style.css';

@@ -1,5 +1,5 @@
-<pre>
 <?php
+	ob_start();
 	require_once('config/db_conn.php');
 
 	/*function getAuthFields($login, $password){
@@ -52,7 +52,7 @@
 			if($password == $password_confirm){
 				$sql = "INSERT INTO users (login, passw) VALUES ('%s', '%s')";
 				$query = sprintf($sql, $login, $password);
-				$result = mysqli_query($link, $query) or die(mtsqli_error($link));
+				$result = mysqli_query($link, $query) or die(mysqli_error($link));
 				return header('Location: /');
 			} else {
 				print("Пароли не совпадают!");
@@ -62,4 +62,3 @@
 		}
 	}
 ?>
-</pre>

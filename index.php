@@ -1,11 +1,12 @@
 <?
 	session_start();
-	//include_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
+	include_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
 	include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
-	$smarty->display('header.html');
+	
 	require_once("model/model.php");
-	$errors = array();
-
+	
+	$smarty->display('header.html');
+	
 	if(isset($_GET['action'])){
 		$action = $_GET['action'];
 	} else {
@@ -13,7 +14,8 @@
 	}
 
 	if(isset($_SESSION['isLogin'])){
-		include('view/mainpage.php');
+		echo "login";
+		print_r($_SESSION);
 	} else if($action == ""){
 		$smarty->display('login.html');
 	}
@@ -21,10 +23,10 @@
 	if($action == "auth"){
 		if(isset($_POST['auth_form_login']) && isset($_POST['auth_form_password'])){
 			getFromDB($_POST['auth_form_login'], $_POST['auth_form_password'], $link);
-			header("Location: /");
+			//header("Location: /");
 		}
 	} else if($action == "reg"){
-		include('view/reg.php');
+		$smarty->display('registration.html');
 		if(isset($_POST['reg_form_login']) && 
 		   isset($_POST['reg_form_password']) &&
 		   isset($_POST['reg_form_password_confirm'])){
@@ -36,7 +38,7 @@
 		}
 	} else if($action == "logout"){
 		logout();
-		header("Location: /");
+		$smarty->display('login.html');
 	}
-	$smarty->display('header.html');
+	$smarty->display('footer.html');
 ?>
