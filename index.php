@@ -13,10 +13,15 @@
 	} else {
 		$action = "";
 	}
+	
+	if(isset($_GET['page'])){
+		$page = $_GET['page'];
+	} else {
+		$page = "";
+	}
 
 	if(isset($_SESSION['isLogin'])){
-		/*echo "login";
-		print_r($_SESSION);*/
+		print_r($_SESSION);
 	} else if($action == ""){
 		$smarty->display('login.html');
 	}
@@ -31,14 +36,29 @@
 		if(isset($_POST['reg_form_login']) && 
 		   isset($_POST['reg_form_password']) &&
 		   isset($_POST['reg_form_password_confirm'])){
-			registration($_POST['reg_form_login'],
-						 $_POST['reg_form_password'],
-						 $_POST['reg_form_password_confirm'],
-						 $link);
+				registration($_POST['reg_form_login'],
+							 $_POST['reg_form_password'],
+							 $_POST['reg_form_password_confirm'],
+							 $link);
 		}
 	} else if($action == "logout"){
 		logout();
 		$smarty->display('login.html');
+	} else if($action == "feedback"){
+		if(isset($_POST['title']) &&
+			 isset($_POST['message']) && 
+			 isset($_POST['datetime'])){
+				print_r($_POST);
+			 }
 	}
+		
+	if($page == "weather"){
+		$smarty->display('weather.html');
+	}	
+	
+	if($page == "feed"){
+		$smarty->display('feedback.html');
+	}
+	
 	$smarty->display('footer.html');
 ?>

@@ -49,13 +49,29 @@
 
 			.header_content_left{
 				width: 700px;
-				background-color: red;
-			}			
+				/*background-color: red;*/
+			}
+				.header_content_left ul{
+					margin:0;
+					padding:0;				
+				}
+				.header_content_left ul li{
+					display: inline;
+					margin-right: 40px;
+
+				}
 			
 			.header_content_right{
 				width: 260px;
-				background-color: green;
+				/*background-color: green;*/
+				text-align: right;
 			}
+				
+				.logoutbtn{
+					padding: 1px 6px;
+					border: 1px solid #fff;
+					text-decoration: none;
+				}
 	
   footer {
     height: 100px;

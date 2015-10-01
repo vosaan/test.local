@@ -12,14 +12,19 @@
 			<div class = "header_content">
 				<div class = "header_content_left">
 					{if isset($login) && isset($mainmenu)}
-						{foreach $mainmenu as $key=>$value}
-							<li><a href = "index.php{$value}">{$key}</a></li>
-						{/foreach}
+						<div class = "mainmenu">
+							<ul>
+								{foreach $mainmenu as $key=>$value}
+									<li><a href = "index.php{$value}">{$key}</a></li>
+								{/foreach}					
+							</ul>
+						</div>
 					{/if}
 				</div>
 				<div class = "header_content_right">
 					{if isset($login)}
-						<a href = "index.php?action=logout">Logout</a>
+						Hello, {$username}&emsp;&emsp;&emsp;
+						<a href = "index.php?action=logout" class = "logoutbtn">Logout</a>
 					{/if}
 				</div>
 			</div>

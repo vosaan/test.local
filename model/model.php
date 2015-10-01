@@ -19,9 +19,10 @@
 			$query = sprintf($sql, $login);
 			$result = mysqli_query($link, $query) or die(mtsqli_error($link));
 			$row = mysqli_fetch_assoc($result);
-			if(isset($row['login']) && isset($row['passw'])){
+			if(isset($row['login']) && isset($row['passw']) && isset($row['id'])){
 				if($row['login'] == $login && $row['passw'] == $password){
 					$_SESSION['username'] = $login;
+					$_SESSION['id'] = $row['id'];
 					return $_SESSION['isLogin'] = true;
 				} else {
 					echo "No!";
