@@ -74,11 +74,10 @@
 	}
 	
 	function getFeedbacks($link){
-		$sql = "SELECT * FROM %s";
-		$query = sprintf($sql, 'feedbacks');
-		$result = mysqli_query($link, $query);
+		$sql = "SELECT * FROM feedbacks";
+		$result = mysqli_query($link, $sql);
 		$allFeeds = mysqli_fetch_all($result, MYSQLI_ASSOC);
-		return $allFeeds;		
+		return $allFeeds;
 	}
 
 	/*function setFeedback(){

@@ -1,10 +1,10 @@
 <?
 	ob_start();
 	session_start();
-	include_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
+	require_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
 	include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
 	
-	require_once("model/model.php");
+	require_once($_SERVER['DOCUMENT_ROOT'].'/model/model.php');
 	
 	$smarty->display('header.html');
 	
@@ -59,6 +59,16 @@
 	
 	if($page == "feed"){
 		$smarty->display('feedback.html');
+	}
+	
+	$allFeeds = array();
+	
+	if($page == "readfeed"){
+		$smarty->display('readfeed.html');
+		echo '<pre>';
+		//$allFeeds = getFeedbacks($link);
+		//print_r($allFeeds);
+		echo '</pre>';
 	}
 	
 	$smarty->display('footer.html');
