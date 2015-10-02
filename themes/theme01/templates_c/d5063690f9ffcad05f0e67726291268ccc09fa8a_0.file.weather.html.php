@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2015-10-01 17:23:12
+<?php /* Smarty version 3.1.27, created on 2015-10-02 18:17:43
          compiled from "C:\OpenServer\domains\test.local\themes\theme01\templates\weather.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:9035560d33c0499c84_06262809%%*/
+/*%%SmartyHeaderCode:18716560e920788b309_05170917%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -13,16 +13,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '9035560d33c0499c84_06262809',
+  'nocache_hash' => '18716560e920788b309_05170917',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_560d33c04d8490_15732449',
+  'unifunc' => 'content_560e92078cd983_30785212',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_560d33c04d8490_15732449')) {
-function content_560d33c04d8490_15732449 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_560e92078cd983_30785212')) {
+function content_560e92078cd983_30785212 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '9035560d33c0499c84_06262809';
+$_smarty_tpl->properties['nocache_hash'] = '18716560e920788b309_05170917';
 ?>
 <h1>Weather</h1><?php }
 }

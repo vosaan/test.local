@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2015-10-01 18:41:45
+<?php /* Smarty version 3.1.27, created on 2015-10-02 18:09:52
          compiled from "C:\OpenServer\domains\test.local\themes\theme01\templates\feedback.html" */ ?>
 <?php
-/*%%SmartyHeaderCode:8062560d4629321e29_28835287%%*/
+/*%%SmartyHeaderCode:26695560e90308dd750_89636565%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -13,16 +13,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8062560d4629321e29_28835287',
+  'nocache_hash' => '26695560e90308dd750_89636565',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_560d462936c1c4_63461187',
+  'unifunc' => 'content_560e90308e15d9_10055901',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_560d462936c1c4_63461187')) {
-function content_560d462936c1c4_63461187 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_560e90308e15d9_10055901')) {
+function content_560e90308e15d9_10055901 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '8062560d4629321e29_28835287';
+$_smarty_tpl->properties['nocache_hash'] = '26695560e90308dd750_89636565';
 ?>
 <form action = "index.php?action=feedback" method = "post" name = "feedback">
 	<label>Title:<br>
