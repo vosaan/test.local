@@ -44,13 +44,14 @@
 	} else if($action == "logout"){
 		logout();
 		$smarty->display('login.html');
-	} else if($action == "feedback"){
-			if(isset($_POST['title']) &&
-						 isset($_POST['message']) &&
-						 isset($_SESSION['id'])){
-							setFeedback($_POST['title'], $_POST['message'], $_SESSION['id'], $link);	
-			}					 
-	}
+	} 
+	
+	if($action == "feedback"){
+		if(isset($_POST['title']) &&
+			 isset($_POST['message'])){
+				setFeedback($_POST['title'], $_POST['message'], $link);	
+		}	
+	}	
 		
 	if($page == "weather"){
 		$smarty->display('weather.html');

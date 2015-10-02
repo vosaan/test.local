@@ -64,12 +64,24 @@
 		}
 	}
 	
-	function setFeedback($userid, $title, $message, $link){
-		if(isset($userid) && isset($title) && isset($message) &&  isset($datetime)){
-			$sql = "INSET INTO feedbacks (userid, title, message, datetime) VALUES ('%d', '%s', '%s')";
-			$query = sprintf($sql, $userid, $title, $message);
+	function setFeedback($title, $message, $link){
+		if(isset($_SESSION['id']) && isset($title) && isset($message)){
+			$sql = "INSERT INTO feedbacks (userid, title, message) VALUES ('%d', '%s', '%s')";
+			$query = sprintf($sql, $_SESSION['id'], $title, $message);
 			$result = mysqli_query($link, $query) or die(mysqli_error($link));
-			return result;
-		}
-	}	
+			return header('Location: index.php?page=feed');
+		} 
+	}
+	
+	function getFeedbacks($link){
+		$sql = "SELECT * FROM %s";
+		$query = sprintf($sql, 'feedbacks');
+		$result = mysqli_query($link, $query);
+		$allFeeds = mysqli_fetch_all($result, MYSQLI_ASSOC);
+		return $allFeeds;		
+	}
+
+	/*function setFeedback(){
+		print($_SESSION['id']);
+	}	*/
 ?>
