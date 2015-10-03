@@ -65,10 +65,10 @@
 	
 	if($page == "readfeed"){
 		$smarty->display('readfeed.html');
-		echo '<pre>';
+		//echo '<pre>';
 		//$allFeeds = getFeedbacks($link);
 		//print_r($allFeeds);
-		echo '</pre>';
+		//echo '</pre>';
 	}
 	
 	$smarty->display('footer.html');
