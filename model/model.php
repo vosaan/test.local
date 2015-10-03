@@ -80,6 +80,19 @@
 		return $allFeeds;
 	}
 
+	function parseWeather($url, $element_id){
+		$parse_str = "";
+		$html = file_get_html($url);
+		foreach($html->find($element_id) as $element){
+			$parse_str .= $element;
+		}
+
+		$html->clear(); 
+		unset($html);		
+		
+		return $parse_str;
+	}
+
 	/*function setFeedback(){
 		print($_SESSION['id']);
 	}	*/
