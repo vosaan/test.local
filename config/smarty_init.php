@@ -2,7 +2,7 @@
 /**
 * Подключение библиотеки Smarty
 */	
-	include_once ($_SERVER['DOCUMENT_ROOT'].'/libs/smarty/smarty.class.php');
+	include_once ($_SERVER['DOCUMENT_ROOT'].'/libs/smarty/Smarty.class.php');
 /**
 * Создание объекта Smarty
 */	
