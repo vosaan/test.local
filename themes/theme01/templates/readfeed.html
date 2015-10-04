@@ -1,12 +1,18 @@
-
-
+{if isset($login)}
+    {if isset($feed)}
 		{foreach $feed as $rec}
 			<h3>{$rec.title}</h3>
 			<p>{$rec.message}</p>
-			<p>{$rec.userid}</p>
-			<p>{$rec.datetime}</p>
+			<table>
+                <tr class="feed_iser_date">
+                    <td><em>Пользователь {$rec.login} оставил отзыв </em></td>
+                    <td><em>{$rec.datetime}</em></td>
+                </tr>
+            </table>
 			<hr>
 		{/foreach}
+    {/if}    
+{/if}        
 
 
 
