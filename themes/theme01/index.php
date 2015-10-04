@@ -12,8 +12,6 @@ if (isset($_SESSION['isLogin']) && isset($_SESSION['username'])){
 require_once($_SERVER['DOCUMENT_ROOT'].'/menu/mainmenu.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/index.php');
 
-//if(isset($allFeeds))echo "sdfsdfsdfsdf";
-
 $smarty->assign('mainmenu', $mainmenu);
 $smarty->assign('feed', $allFeeds);
 
