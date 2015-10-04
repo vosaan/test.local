@@ -15,7 +15,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/index.php');
 $smarty->assign('mainmenu', $mainmenu);
 $smarty->assign('feed', $allFeeds);
 
-$today = parseWeather('http://www.gismeteo.ua/city/daily/5093/', '#tbwdaily1 tr');
+$today = parseWeather('http://www.gismeteo.ua/city/daily/5093/', '#tbwdaily1 tr td');
 $smarty->assign('today', $today);
 
 /*$gettime = time();
