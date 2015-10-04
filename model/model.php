@@ -74,7 +74,7 @@
 	}
 	
 	function getFeedbacks($link){
-		$sql = "SELECT * FROM users, feedbacks WHERE users.id = feedbacks.userid";
+		$sql = "SELECT login, title, message, datetime FROM users, feedbacks WHERE users.id = feedbacks.userid ";
 		$result = mysqli_query($link, $sql);
 		$allFeeds = mysqli_fetch_all($result, MYSQLI_ASSOC);
 		return $allFeeds;
