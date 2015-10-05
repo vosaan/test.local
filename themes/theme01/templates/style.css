@@ -94,3 +94,16 @@
   color: #aaa;
   font-size: 12px;
 }
+.authform{
+  padding: 0;
+  width: 198px;
+  background-color: #123123;
+}
+.auth_field{
+  width: 190px;
+  margin: 0;
+}
+
+.submit{
+  text-align: center;
+}
