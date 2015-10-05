@@ -21,7 +21,9 @@ foreach($html->find('th') as $element){
 		$arr[] = $element->title.'::'.trim($element);
 	} 
 }
-
+for($i=0, $k=0; $i<=77, $k<=11; $i+=7, $k++) {
+		$arrn[$i]=$arr[$k];
+}
 
 foreach($html->find('tr.wrow td') as $element){
 	if(!$element -> img){
@@ -29,12 +31,13 @@ foreach($html->find('tr.wrow td') as $element){
 	} 
 }
 
+for($j=0; $j<=77; $j+=7){
+	$arr2[$j]=$arrn[$j];
+}
+
 //$arr2 = array_diff($arr2, array(''));
 //$arr2 = array_values(array_filter($arr2));
-for($i=sizeof($arr)-1;$i>=0;$i--)
-{
-  $arr[$i+7] = $arr[$i];
-}
+
 //unset($arr[0]);
 //array_unshift($arr2, $arr[0]); 
 
@@ -48,9 +51,10 @@ for($i=sizeof($arr)-1;$i>=0;$i--)
 			echo $i."  ".$j; continue; continue;
 		}
 	}
-	//print_r($arr);
-	//print_r(array_chunk($arr2, 6));*/
-	print_r($arr);	
+	//print_r($arr);*/
+	print_r(array_chunk($arr2, 7));
+	print_r($arrn);	
+	//print_r($arr2);	
 	?>
 
 
