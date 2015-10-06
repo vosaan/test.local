@@ -18,12 +18,13 @@ $html = file_get_html('https://www.gismeteo.ua/weather-zaporizhzhya-5093/');
 
 foreach($html->find('th') as $element){
 	if(isset($element->title)){
-		$arr[] = $element->title.'::'.trim($element);
+		$arr[] = trim($element->plaintext).': '.$element->title;
 	} 
 }
 for($i=0, $k=0; $i<=77, $k<=11; $i+=7, $k++) {
 		$arrn[$i]=$arr[$k];
 }
+
 
 foreach($html->find('tr.wrow td') as $element){
 	if(!$element -> img){
@@ -38,9 +39,9 @@ for($j=0; $j<=77; $j+=7){
 //$arr2 = array_diff($arr2, array(''));
 //$arr2 = array_values(array_filter($arr2));
 
+
 //unset($arr[0]);
 //array_unshift($arr2, $arr[0]); 
-
 ?><pre>
 	<?
 	/*$j=0;
@@ -52,9 +53,11 @@ for($j=0; $j<=77; $j+=7){
 		}
 	}
 	//print_r($arr);*/
-	print_r(array_chunk($arr2, 7));
-	print_r($arrn);	
+	$arr_new = array_chunk($arr2, 7);
+	$smarty->assign('weath', $arr_new);
+	print_r($arr_new);	
 	//print_r($arr2);	
 	?>
+	</pre>
 
 
