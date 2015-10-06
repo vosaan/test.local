@@ -1,7 +1,15 @@
 {if isset ($login)}
-<table border=1>
-	{foreach $today as $rec}
-		{$rec}
-	{/foreach}
-</table>	
+	{if isset($weath)}
+		
+		<table border=1>
+			{foreach $weath as $rec}
+				{foreach $rec as $day}
+					<tr>
+						<td>{$day}</td>
+					</tr>
+				{/foreach}
+			{/foreach}
+		</table>
+		
+	{/if}
 {/if}
