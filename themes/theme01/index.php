@@ -36,7 +36,16 @@ $html = file_get_html('https://www.gismeteo.ua/weather-zaporizhzhya-5093/');
 function delete($str,$symbol=' ') 
 {
 	return($strpos=mb_strpos($str,$symbol))!==false?mb_substr($str,0,$strpos,'utf8'):$str;
-} 
+}
+
+/**
+ *Функция "отжеляет" строку(направление ветра) от числа(скорости ветра) и возвращает строку,
+ *разделенную слешем
+ */
+function wind($str){
+	preg_match("/([а-яА-Я]+)([0-9]+)/", $str, $matches);
+	return $matches[1]." / ".$matches[2];
+}
 
 /**
  *В массив $arr_times_of_day заносятся значения времени суток за 3 дня.
@@ -75,7 +84,8 @@ for($i = 0, $j = 0; $i <= count($arr_weather)-1, $j <= count($arr_times_of_day)-
 }
 
 /**
- *Занесение в $arr_weather значений из $arr_times_of_day_nums
+ *Занесение в $arr_weather значений из $arr_times_of_day_nums, преобразование и занесение
+ *корректных значений направления/скорости ветра
  */
 for($i = 0, $j = 4; $i <= count($arr_weather)-1; $i += 7, $j += 7){
 	$arr_weather[$i] = $arr_times_of_day_nums[$i];
@@ -118,11 +128,4 @@ $smarty->assign('after_tomorrow_date', $after_tomorrow_date);
 $smarty->assign('arr_today', $today_part);
 $smarty->assign('arr_tomorrow', $tomorrow_part);
 $smarty->assign('arr_after_tomorrow', $after_tomorrow_part);
-?>
-
-<?php
-function wind($str){
-	preg_match("/([а-яА-Я]+)([0-9]+)/", $str, $matches);
-	return $matches[1]." / ".$matches[2];
-}
 ?>
