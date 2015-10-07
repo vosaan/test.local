@@ -70,6 +70,13 @@ $tomorrow = array_slice($arr_weather, 28, 28);
 $after_tomorrow = array_slice($arr_weather, 56, 28);
 
 /**
+ *Разбиение каждого из массивов на 4 части, чтобы легче бвло обработать в Smarty
+ */
+$today_part =  array_chunk($today, 7);
+$tomorrow_part =  array_chunk($tomorrow, 7);
+$after_tomorrow_part =  array_chunk($after_tomorrow, 7);
+
+/**
  *Определение дат ("сегодня", "завтра", "послезавтра")
  */
 setlocale(LC_TIME, "ru-RU");
@@ -84,40 +91,7 @@ $smarty->assign('today_date', $today_date);
 $smarty->assign('tomorrow_date', $tomorrow_date);
 $smarty->assign('after_tomorrow_date', $after_tomorrow_date);
 
-$smarty->assign('arr_today', $today);
-$smarty->assign('arr_tomorrow', $tomorrow);
-$smarty->assign('arr_after_tomorrow', $after_tomorrow);
- 
+$smarty->assign('arr_today', $today_part);
+$smarty->assign('arr_tomorrow', $tomorrow_part);
+$smarty->assign('arr_after_tomorrow', $after_tomorrow_part);
 ?>
-	<?
-	/*$j=0;
-	//echo count($arr2);
-	for($i=0; $i<count($arr); $i++){
-		for(; $j<count($arr2); $j+=6){
-			//$arr[$j] = $arr[$i];
-			echo $i."  ".$j; continue; continue;
-		}
-	}
-	//print_r($arr);*/
-	//$arr_new = array_chunk($arr2, 7);
-	//$arr_day = array_chunk($arr_new, 3);
-	//$smarty->assign('weath', $arr_new);
-	//print_r($arr2);	
-	//print_r($arr_times_of_day_nums);
-	/*
-echo $today_date.'<br>';
-echo $tomorrow_date.'<br>';
-echo $after_tomorrow_date.'<br>';
-
-	
-	print_r($today);
-	
-	print_r($tomorrow);
-	
-	print_r($after_tomorrow);
-	?>
-	*/
-	
-	
-
-
