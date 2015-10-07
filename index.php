@@ -3,7 +3,6 @@
 	session_start();
 	require_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
 	include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
-	
 	require_once($_SERVER['DOCUMENT_ROOT'].'/model/user.php');
 	
 	$smarty->display('header.html');
@@ -28,10 +27,18 @@
 	
 	if($action == "auth"){
 		if(isset($_POST['auth_form_login']) && isset($_POST['auth_form_password'])){
-			getFromDB($_POST['auth_form_login'], $_POST['auth_form_password'], $link);
+			$user = new user();
+			$user->login($_POST['auth_form_login'], $_POST['auth_form_password'], $link);
 			header("Location: /");
 		}
-	} else if($action == "reg"){
+	}
+	
+	if($action == "logout"){
+		user::logout();
+		$smarty->display('login.html');
+	}
+	
+	if($action == "reg"){
 		$smarty->display('registration.html');
 		if(isset($_POST['reg_form_login']) && 
 		   isset($_POST['reg_form_password']) &&
@@ -41,10 +48,7 @@
 							 $_POST['reg_form_password_confirm'],
 							 $link);
 		}
-	} else if($action == "logout"){
-		logout();
-		$smarty->display('login.html');
-	} 
+	}  
 	
 	if($action == "feedback"){
 		if(isset($_POST['title']) &&
