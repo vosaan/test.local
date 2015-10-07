@@ -2,12 +2,23 @@
 	{if isset($weath)}
 		
 		<table border=1>
+		<tr>
+			<tr>
+				<td>Время суток</td>
+				<td>Облачность</td>
+				<td>Температура</td>
+				<td>Давление</td>
+				<td>Направление и<br>скорость ветра</td>
+				<td>Влажность</td>
+				<td>Ощущается как</td>
+			</tr>
+		</tr>	
 			{foreach $weath as $rec}
+				<tr>
 				{foreach $rec as $day}
-					<tr>
-						<td>{$day}</td>
-					</tr>
+					<td>{$day}</td>
 				{/foreach}
+				</tr>
 			{/foreach}
 		</table>
 		
