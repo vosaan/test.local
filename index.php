@@ -4,7 +4,7 @@
 	require_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
 	include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
 	
-	require_once($_SERVER['DOCUMENT_ROOT'].'/model/model.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/model/user.php');
 	
 	$smarty->display('header.html');
 	
