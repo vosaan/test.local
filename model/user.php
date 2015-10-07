@@ -6,14 +6,9 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/config/db_conn.php');
  
 class user{
-    public $login;
-    public $password;
-    public $id;
-    
-    function __construct($login, $password){
-        $this->login = $login;
-        $this->password = $password;
-    }
+    /*private $login;
+    private $password;
+    private $id;*/
     
     function login($login, $password, $link){
         if(isset($login) && isset($password)){
@@ -23,12 +18,23 @@ class user{
             $row = mysqli_fetch_assoc($result);
             if(isset($row['login']) && isset($row['passw']) && isset($row['id'])){
                 if($row['login'] == $login && $row['passw'] == $password){
-                    $_SESSION['username'] = $this->login;
-                    $_SESSION['id'] = $this->id;
+                    $_SESSION['username'] = $login;
+                    $_SESSION['id'] = $row['id'];
                     return $_SESSION['isLogin'] = true;
                 } else return false;    
             }
         } else return false;
+    }
+    
+    static function logout(){
+		$_SESSION = array();
+		session_destroy();
+        unset($user);
+		return header('Location: /');        
+    }
+    
+    static function registration($login, $password, $password_confirm, $link){
+        
     }
 }
  
