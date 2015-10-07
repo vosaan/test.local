@@ -77,9 +77,14 @@ for($i = 0, $j = 0; $i <= count($arr_weather)-1, $j <= count($arr_times_of_day)-
 /**
  *Занесение в $arr_weather значений из $arr_times_of_day_nums
  */
-for($i = 0; $i <= count($arr_weather)-1; $i += 7){
-	$arr_weather[$i]=$arr_times_of_day_nums[$i];
+for($i = 0, $j = 4; $i <= count($arr_weather)-1; $i += 7, $j += 7){
+	$arr_weather[$i] = $arr_times_of_day_nums[$i];
+	$arr_weather[$j] =  wind($arr_weather[$j]);
 }
+
+/*for($i = 4; $i <= count($arr_weather)-1; $i += 7){
+	echo wind($arr_weather[$j]).'<br>';
+}*/
 
 /**
  *Разнесение показателей погоды на 3 массива ("сегодня", "завтра", "послезавтра")
@@ -113,4 +118,11 @@ $smarty->assign('after_tomorrow_date', $after_tomorrow_date);
 $smarty->assign('arr_today', $today_part);
 $smarty->assign('arr_tomorrow', $tomorrow_part);
 $smarty->assign('arr_after_tomorrow', $after_tomorrow_part);
+?>
+
+<?php
+function wind($str){
+	preg_match("/([а-яА-Я]+)([0-9]+)/", $str, $matches);
+	return $matches[1]." / ".$matches[2];
+}
 ?>
