@@ -4,16 +4,29 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/model/model.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/libs/simpledom/simple_html_dom.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/menu/mainmenu.php');
 
+/**
+ *Определение переменных Smarty для хранения переменных сессии
+ */
 if (isset($_SESSION['isLogin']) && isset($_SESSION['username'])){
 	$smarty->assign('login', $_SESSION['isLogin']);
 	$smarty->assign('username', $_SESSION['username']);
 }
 
+/**
+ *Определение переменной Smarty для хранения массива с меню
+ */
 $smarty->assign('mainmenu', $mainmenu);
 
+/**
+ *Вызов функции, которая возвращает отзывы
+ *Определение переменной Smarty для массива с отзывами
+ */
 $allFeeds = getFeedbacks($link);
 $smarty->assign('feed', $allFeeds);
 
+/**
+ *Объект со страницей
+ */
 $html = file_get_html('https://www.gismeteo.ua/weather-zaporizhzhya-5093/');
 
 /**
@@ -45,6 +58,12 @@ foreach($html->find('tr.wrow td') as $element){
 		$arr_weather[] = delete($element->plaintext, " ");
 	} 
 }
+
+/**
+ *Освобождение памяти
+ */
+$html->clear(); 
+unset($html);
 
 /**
  *В массив $arr_times_of_day_nums заносятся элементы из массива $arr_times_of_day, но с изменёнными
