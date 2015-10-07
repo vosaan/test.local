@@ -1,5 +1,5 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/model.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/libs/simpledom/simple_html_dom.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/menu/mainmenu.php');
