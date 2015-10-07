@@ -13,7 +13,7 @@
 		}	
 	}*/
 
-	function getFromDB($login, $password, $link){
+	/*function getFromDB($login, $password, $link){
 		if(isset($login) && isset($password)){		
 			$sql = "SELECT * FROM users WHERE login='%s'";
 			$query = sprintf($sql, $login);
@@ -39,7 +39,7 @@
 		$_SESSION = array();
 		session_destroy();
 		return header('Location: /');
-	}
+	}*/
 
 	function registration($login, $password, $password_confirm, $link){
 		if(isset($login) && isset($password) && isset($password_confirm)){
