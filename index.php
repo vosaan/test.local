@@ -31,9 +31,7 @@
 			$user->login($_POST['auth_form_login'], $_POST['auth_form_password'], $link);
 			header("Location: /");
 		}
-	}
-	
-	if($action == "logout"){
+	} else if($action == "logout"){
 		user::logout();
 		$smarty->display('login.html');
 	}
@@ -69,10 +67,6 @@
 	
 	if($page == "readfeed"){
 		$smarty->display('readfeed.html');
-		//echo '<pre>';
-		//$allFeeds = getFeedbacks($link);
-		//print_r($allFeeds);
-		//echo '</pre>';
 	}
 	
 	$smarty->display('footer.html');
