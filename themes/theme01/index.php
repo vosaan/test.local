@@ -16,9 +16,14 @@ $smarty->assign('feed', $allFeeds);
 
 $html = file_get_html('https://www.gismeteo.ua/weather-zaporizhzhya-5093/');
 
+function delete($str,$symbol=' ') 
+{
+	return($strpos=mb_strpos($str,$symbol))!==false?mb_substr($str,0,$strpos,'utf8'):$str;
+} 
+
 foreach($html->find('th') as $element){
 	if(isset($element->title)){
-		$arr[] = trim($element->plaintext).': '.$element->title;
+		$arr[] = trim($element->plaintext);
 	} 
 }
 for($i=0, $k=0; $i<=77, $k<=11; $i+=7, $k++) {
@@ -28,7 +33,7 @@ for($i=0, $k=0; $i<=77, $k<=11; $i+=7, $k++) {
 
 foreach($html->find('tr.wrow td') as $element){
 	if(!$element -> img){
-		$arr2[] = $element->plaintext;
+		$arr2[] = delete($element->plaintext, " ");
 	} 
 }
 
@@ -42,7 +47,7 @@ for($j=0; $j<=77; $j+=7){
 
 //unset($arr[0]);
 //array_unshift($arr2, $arr[0]); 
-?><pre>
+?>
 	<?
 	/*$j=0;
 	//echo count($arr2);
@@ -55,9 +60,9 @@ for($j=0; $j<=77; $j+=7){
 	//print_r($arr);*/
 	$arr_new = array_chunk($arr2, 7);
 	$smarty->assign('weath', $arr_new);
-	print_r($arr_new);	
+	//print_r($arr_new);	
 	//print_r($arr2);	
 	?>
-	</pre>
+	
 
 
