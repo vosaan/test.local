@@ -6,9 +6,14 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/config/db_conn.php');
  
 class user{
-    /*private $login;
+    private $login;
     private $password;
-    private $id;*/
+    private $id;
+    
+    function __construct($login, $password){
+        $this->login = $login;
+        $this->password = $password;
+    }
     
     function login($login, $password, $link){
         if(isset($login) && isset($password)){
@@ -34,9 +39,23 @@ class user{
     }
     
     static function registration($login, $password, $password_confirm, $link){
-        
+		if(isset($login) && isset($password) && isset($password_confirm)){
+			$sql = "SELECT * FROM users WHERE login='%s'";
+			$query = sprintf($sql, $login);
+			$result = mysqli_query($link, $query) or die(mtsqli_error($link));
+			$row = mysqli_fetch_assoc($result);
+			if($row['login'] == $login){
+				print ("Такой уже есть");
+				return false;
+			}
+			
+            if($password == $password_confirm){
+				$sql = "INSERT INTO users (login, passw) VALUES ('%s', '%s')";
+				$query = sprintf($sql, $login, $password);
+				$result = mysqli_query($link, $query) or die(mysqli_error($link));
+				return header('Location: /');
+			} else print("Пароли не совпадают!");	
+		} else return false;    
     }
 }
- 
-
 ?>
