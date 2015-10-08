@@ -1,8 +1,8 @@
 <?
 	ob_start();
 	session_start();
-	require_once ($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
-	include_once ($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
+	include_once($_SERVER['DOCUMENT_ROOT'].'/config/smarty_init.php');
 	require_once($_SERVER['DOCUMENT_ROOT'].'/model/user.php');
 	
 	/*Подключение "шапки" шаблона*/
@@ -37,22 +37,21 @@
 	
 	if($action == "auth"){
 		if(isset($_POST['auth_form_login']) && isset($_POST['auth_form_password'])){
-			$user = new user();
-			$user->login($_POST['auth_form_login'], $_POST['auth_form_password'], $link);
+			login($_POST['auth_form_login'], $_POST['auth_form_password'], $link);
 			header("Location: index.php?page=weather");
 		}
 	} else if($action == "logout"){
-		user::logout();
+		logout();
 		$smarty->display('login.html');
 	} else if($action == "reg"){
 		$smarty->display('registration.html');
 		if(isset($_POST['reg_form_login']) && 
 		   isset($_POST['reg_form_password']) &&
 		   isset($_POST['reg_form_password_confirm'])){
-				user::registration($_POST['reg_form_login'],
-								   $_POST['reg_form_password'],
-								   $_POST['reg_form_password_confirm'],
-								   $link);
+			 registration($_POST['reg_form_login'],
+				 				    $_POST['reg_form_password'],
+								    $_POST['reg_form_password_confirm'],
+								    $link);
 		}
 	} else if($action == "feedback"){
 		if(isset($_POST['title']) &&
