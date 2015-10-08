@@ -1,0 +1,158 @@
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+		font-family: Verdana;
+		font-size: 14px;
+  }
+	
+	h2{
+		margin: 0;
+	}
+  .wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+  }
+  .page {
+    padding-bottom: 100px;
+  }
+	
+		header{
+			width: 100%;
+			height: 50px;
+			background-color: #123456;
+			color: #fff;
+		}
+		
+			.header_content, .footer_content, .page_content{
+				width: 960px;
+				margin: 0 auto;
+				background-color: inherit;
+				height: inherit;
+			}
+			
+			.header_content a{
+				color: #fff;
+				text-decoration: none;
+			}			
+			
+			.header_content a:hover{
+				text-decoration: underline;
+			}
+			
+			.header_content_left, .header_content_right{
+				margin-top: 17px;
+				float: left;
+			}
+
+			.header_content_left{
+				width: 700px;
+				/*background-color: red;*/
+			}
+				.header_content_left ul{
+					margin:0;
+					padding:0;				
+				}
+				.header_content_left ul li{
+					display: inline;
+					margin-right: 40px;
+
+				}
+			
+			.header_content_right{
+				width: 260px;
+				/*background-color: green;*/
+				text-align: right;
+			}
+				
+				.logoutbtn{
+					padding: 1px 6px;
+					border: 1px solid #fff;
+					text-decoration: none;
+				}
+	
+  .page_content{
+    margin-top: 20px;
+  }
+  
+  footer {
+    height: 100px;
+    margin-top: -100px;
+    background: #123456;
+    color: #fff;
+  }
+  
+  .footer_content_copy{
+    float: left;
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+  }
+	
+/*										*/	
+
+.login_form, .reg_form{
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 200px;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.auth_field{
+  width: 200px;
+  margin-top: 4px;
+}
+
+.feed_user_date{
+  color: #aaa;
+  font-size: 12px;
+}
+
+
+
+.feedform{
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 100px;
+  padding: 20px;
+}
+  .title_field{
+    width: 492px;
+  }
+  
+  textarea{
+    max-width: 492px;
+    min-width: 492px;
+    max-height: 200px;
+    min-height: 200px;
+    resize: none;
+  }
+  
+
+.submit{
+  text-align: center;
+}
+
+.reg_notice{
+  font-size: 10px;
+  margin-top: 2px;
+  color: #888;
+}
+
+.feed_element{
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #eee;
+}
+
+.feed_element h3{
+  margin-top: 0;
+}

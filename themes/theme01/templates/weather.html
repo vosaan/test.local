@@ -1,0 +1,58 @@
+{if isset ($login)}
+	<table border=1>
+	<tr>
+		<th>Время суток</th>
+		<th>Облачность</th>
+		<th>Температура воздуха, &deg;С</th>
+		<th>Атмосферное давление, мм.р.с.</th>
+		<th>Направление / скорость ветра, м./с.</th>
+		<th>Относительная влажность, %</th>
+		<th>Ощущается как, &deg;С</th>
+	</tr>
+	<tr>
+		{if isset($today_date)}
+		<td colspan=7><h2>{$today_date}</h2></td>
+		{/if}
+	</tr>
+	{if isset($arr_today)}
+		{foreach $arr_today as $rec}
+		<tr>
+			{foreach $rec as $day}
+				<td>{$day}</td>
+			{/foreach}
+		</tr>
+		{/foreach}
+	{/if}
+	
+	<tr>
+		{if isset($tomorrow_date)}
+		<td colspan=7><h2>{$tomorrow_date}</h2></td>
+		{/if}
+	</tr>
+	{if isset($arr_tomorrow)}
+		{foreach $arr_tomorrow as $rec}
+		<tr>
+			{foreach $rec as $day}
+				<td>{$day}</td>
+			{/foreach}
+		</tr>
+		{/foreach}
+	{/if}
+
+	<tr>
+		{if isset($after_tomorrow_date)}
+		<td colspan=7><h2>{$after_tomorrow_date}</h2></td>
+		{/if}
+	</tr>
+	{if isset($arr_after_tomorrow)}
+		{foreach $arr_after_tomorrow as $rec}
+		<tr>
+			{foreach $rec as $day}
+				<td>{$day}</td>
+			{/foreach}
+		</tr>
+		{/foreach}
+	{/if}
+	
+	</table>
+{/if}

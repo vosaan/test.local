@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+				{if isset($title)}		
+						{$title} - My first site
+				{/if}
+		</title>	
+		<link rel = "stylesheet" type = "text/css" href = '/themes/theme01/templates/style.css'>
+		<meta charset = "utf8">
+	</head>
+<body>
+<div class="wrap">
+  <div class="page">
+		<header>
+			<div class = "header_content">
+				<div class = "header_content_left">
+					{if isset($login) && isset($mainmenu)}
+						<div class = "mainmenu">
+							<ul>
+								{foreach $mainmenu as $key=>$value}
+									<li><a href = "index.php{$value}">{$key}</a></li>
+								{/foreach}					
+							</ul>
+						</div>
+					{/if}
+				</div>
+				<div class = "header_content_right">
+					{if isset($login)}
+						Привет, {$username}&emsp;&emsp;&emsp;
+						<a href = "index.php?action=logout" class = "logoutbtn">Выйти</a>
+					{/if}
+				</div>
+			</div>
+		</header>
+		<div class = "page_content">
+		<!-- End of header -->
