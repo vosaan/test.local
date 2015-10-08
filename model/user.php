@@ -45,8 +45,14 @@ class user{
 			$result = mysqli_query($link, $query) or die(mtsqli_error($link));
 			$row = mysqli_fetch_assoc($result);
 			if($row['login'] == $login){
-				print ("Такой уже есть");
+				print ("Пользователь с таким логином уже существует!");
 				return false;
+			} else if(!preg_match('/^[a-z0-9_-]{3,15}$/', $login)){
+				print ("Неверный формат логина");
+				return false; 				
+			} else if(!preg_match('/^[a-z0-9_-]{6,15}$/', $password)){
+				print ("Неверный формат пароля");
+				return false; 				
 			}
 			
             if($password == $password_confirm){

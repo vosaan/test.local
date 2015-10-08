@@ -1,14 +1,16 @@
-<div class = "reg_form">
-	<form action="" method="POST">
-		Login:<br>
-		<input type = "text" name="reg_form_login" required autofocus><br>
-
-		Password:<br>
-		<input type = "password" name="reg_form_password" required><br>
-
-		Password one more time:<br>
-		<input type = "password" name="reg_form_password_confirm" required><br>		
+<form action = "" method = "POST" class = "login_form">
+		<label>Логин:<br>
+				<input type = "text" name="reg_form_login" class = "auth_field" required autofocus>
+				<p class = "reg_notice">Логин должен содержать от 3 до 15 символов и может состоять из латинских символов (a-z), символов "-", "_" и цифр</p>
+		</label>
 		
-		<input type="submit" name="reg_submit_btn" value="Register">
-	</form>
-</div>
+		<label>	Пароль:<br>
+				<input type = "password" name="reg_form_password" class = "auth_field" required>
+				<p class = "reg_notice">Пароль должен содержать от 6 до 15 символов и может состоять из латинских символов (a-z), символов "-", "_" и цифр</p>
+		Пароль ещё раз:<br>
+				<input type = "password" name="reg_form_password_confirm" class = "auth_field" required>
+		</label>		
+		
+		<input type="submit" name="reg_submit_btn" value="Зарегистрироваться" class = "auth_field">
+		<p style = "text-align: center"><a href = "index.php">Авторизация</a></p>
+</form>

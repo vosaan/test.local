@@ -39,7 +39,7 @@ function delete($str,$symbol=' ')
 }
 
 /**
- *Функция "отжеляет" строку(направление ветра) от числа(скорости ветра) и возвращает строку,
+ *Функция "отделяет" строку(направление ветра) от числа(скорости ветра) и возвращает строку,
  *разделенную слешем
  */
 function wind($str){
@@ -128,4 +128,9 @@ $smarty->assign('after_tomorrow_date', $after_tomorrow_date);
 $smarty->assign('arr_today', $today_part);
 $smarty->assign('arr_tomorrow', $tomorrow_part);
 $smarty->assign('arr_after_tomorrow', $after_tomorrow_part);
+
+/* Год для футтера*/
+$smarty->assign('year', date('Y'));
+
+print_r($_GET);
 ?>

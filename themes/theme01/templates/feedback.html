@@ -1,11 +1,11 @@
 {if isset($login)}
-	<form action = "index.php?action=feedback" method = "post" name = "feedback">
-		<label>Title:<br>
-			<input type = "text" name = "title" required autofocus><br>
+	<form action = "index.php?action=feedback" method = "post" name = "feedback" class = "feedform">
+		<label>Заголовок отзыва:<br>
+			<input type = "text" name = "title" class = "title_field" required autofocus><br>
 		</label>
-		<label>Message:<br>
+		<label>Отзыв:<br>
 			<textarea name = "message" required></textarea>
 		</label><br>
-		<input type = "submit" name = "submitbtn" value = "Leave feedback">	
+		<input type = "submit" name = "submitbtn" value = "Отправить отзыв">	
 	</form>
 {/if}

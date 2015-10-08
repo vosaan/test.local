@@ -1,10 +1,9 @@
-<div class = "login_form">
-	<form method = "POST" action = "index.php?action=auth" class = "authform">
-		Login:<br>
-		<input type = 'text' name = "auth_form_login" class = "auth_field" autofocus><br>
-		Password:<br>
-		<input type = 'password' name = "auth_form_password" class = "auth_field"><br>
-		<input type = 'submit' name = "auth_form_btn" class = "submit" value = 'Sign in'>
-	</form>
-	<a href="index.php?action=reg">Регистрация</a>
-</div>
+<form method = "POST" action = "index.php?action=auth" class = "login_form">
+	Логин:<br>
+	<input type = 'text' name = "auth_form_login" class = "auth_field" autofocus><br>
+	Пароль:<br>
+	<input type = 'password' name = "auth_form_password" class = "auth_field"><br>
+	<input type = 'submit' name = "auth_form_btn" class = "auth_field" value = 'Войти'>
+	<p style = "text-align: center"><a href="index.php?action=reg">Регистрация</a></p>
+</form>
+
