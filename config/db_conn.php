@@ -1,21 +1,21 @@
 <?php
-/*
-*	connection to database
-*/
+/**
+ * db_conn.php
+ * Конфигурация подключения к базе данных
+ */
 
-	//define('HOST', 'localhost');
-	//define('USER', 'bwt_user');
-	//define('PASS', '24sen2015');
-	//define('BASE', 'bwtgroup');
 
-	define('HOST', 'localhost');
-	define('USER', 'root');
-	define('PASS', '');
-	define('BASE', 'base');
+/* Подключение к базе данных */
+define('HOST', 'localhost');
+define('USER', 'root');
+define('PASS', '');
+define('BASE', 'base');
 
-	function db_connect(){
-		$link = mysqli_connect(HOST, USER, PASS, BASE) or die(mysqli_error($link));
-		return $link;
-	}
+/* Функция возвращает дескриптор подключения */
+function db_connect(){
+	$link = mysqli_connect(HOST, USER, PASS, BASE) or die(mysqli_error($link));
+	return $link;
+}
 
-	$link = db_connect(); // <-- database connection descriptor
+/* Дескриптор подключения */
+$link = db_connect();
