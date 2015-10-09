@@ -1,5 +1,5 @@
 {if isset($login)}
-	<form action = "index.php?action=feedback" method = "post" name = "feedback" class = "feedform">
+	<!--form action = "index.php?action=feedback" method = "post" name = "feedback" class = "feedform">
 		<label>Заголовок отзыва:<br>
 			<input type = "text" name = "title" class = "title_field" required autofocus><br>
 		</label>
@@ -7,5 +7,34 @@
 			<textarea name = "message" required></textarea>
 		</label><br>
 		<input type = "submit" name = "submitbtn" value = "Отправить отзыв">	
-	</form>
+	</form-->
+
+​<div id="feedback-box">
+
+   <h2>Связь со мной</h2>
+
+   <form id="feedback-form">
+
+     <div class="input-bloc w1">
+        <label for="name">Имя:</label>
+        <input type="text" size="25" name="name" id="name" />
+        <div class="error-box"></div> <!-- Контейнер для ошибок -->
+     </div>
+
+     <div class="input-bloc w1">
+        <label for="email">Email:</label>
+        <input type="text" size="25" name="email" id="email" />
+        <div class="error-box"></div>
+     </div>
+
+     <div class="input-bloc msg">
+        <label for="message">Сообщение:</label>
+        <textarea name="message" cols="50" rows="10" id="message"></textarea>
+        <div class="error-box"></div>
+     </div>
+
+     <div><input type="submit" id="send" value="Отправить письмо" /></div>
+   </form>
+</div>
+	
 {/if}
