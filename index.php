@@ -46,9 +46,11 @@ if(isset($_GET['page'])){
  * Признаком авторизации является значение true в элементе 'isLogin' массива $_SESSION.
  * Если это не так, вызывается шаблон страницы авторизации
  */	
-if(!isset($_SESSION['isLogin'])){
-  $smarty->display('login.html');
-} 
+	if(isset($_SESSION['isLogin'])){
+		//print_r($_SESSION);
+	} else if($action == ""){
+		$smarty->display('login.html');
+	}
 
 
 /*
