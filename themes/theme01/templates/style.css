@@ -137,13 +137,13 @@ padding: 20px;
   width: 492px;
 }
 
-textarea{
+/*textarea{
   max-width: 492px;
   min-width: 492px;
   max-height: 200px;
   min-height: 200px;
   resize: none;
-}
+}*/
 
 
 .submit{
@@ -167,3 +167,5 @@ background-color: #eee;
 .feed_element h3{
 margin-top: 0;
 }
+
+/**************************************/
