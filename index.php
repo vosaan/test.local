@@ -13,7 +13,7 @@ session_start();
 /* Подключение файла шаблона */
 require_once($_SERVER['DOCUMENT_ROOT'].'/themes/theme01/index.php');
 
-/* Подключение файла "логики" приложения*/
+/* Подключение файла "логики" приложения */
 require_once($_SERVER['DOCUMENT_ROOT'].'/model/model.php');
 	
 /* Вывод "шапки" шаблона */
