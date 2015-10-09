@@ -62,63 +62,100 @@ function login($login, $password, $link){
 
 
 /*	Регистрация нового пользователя */	
-	function registration($login, $password, $password_confirm, $link){
+function registration($login, $password, $password_confirm, $link){
+	
+	/* Если аргументы определены -  */
+	if(isset($login) && isset($password) && isset($password_confirm)){
 		
-		/* Если аргументы определены -  */
-		if(isset($login) && isset($password) && isset($password_confirm)){
-			
-			/* логин и пароль "очищаются" от "лишних" символов */
-			$login =  mysqli_real_escape_string($link, trim($login));
-			$password =  mysqli_real_escape_string($link, trim($password));
-			$password_confirm =  mysqli_real_escape_string($link, trim($password_confirm));
-			
-			$sql = "SELECT * FROM users WHERE login='%s'";
-			$query = sprintf($sql, $login);
-			$result = mysqli_query($link, $query) or die(mtsqli_error($link));
-			$row = mysqli_fetch_assoc($result);
+		/* логин, пароль и подтверждение пароля "очищаются" от "лишних" символов */
+		$login =  mysqli_real_escape_string($link, trim($login));
+		$password =  mysqli_real_escape_string($link, trim($password));
+		$password_confirm =  mysqli_real_escape_string($link, trim($password_confirm));
+		
+		/* 
+		 * Подготовка и выполнение запроса к базе данных. В случае, если в таблице users 
+		 * существует запись, в которой поле login совпадает с переданным функции аргументом $login,
+		 * запрос вернёт массив, содержащий соответствующую запись.
+		 */	
+		$sql = "SELECT * FROM users WHERE login='%s'";
+		$query = sprintf($sql, $login);
+		$result = mysqli_query($link, $query) or die(mtsqli_error($link));
+		$row = mysqli_fetch_assoc($result);
+		/*
+		 * Если данные совпадают, выводится сообщение о том, что такой пользователь
+		 * уже существует
+		 */			
+		if(isset($row['login'])){
 			if($row['login'] == $login){
-				print ("Пользователь с таким логином уже существует!");
-				return false;
-			} else if(!preg_match('/^[a-z0-9_-]{3,15}$/', $login)){
-				print ("Неверный формат логина");
-				return false; 				
-			} else if(!preg_match('/^[a-z0-9_-]{6,15}$/', $password)){
-				print ("Неверный формат пароля");
-				return false; 				
+				print ("<p style = 'color: red; text-align: center'>Пользователь с таким логином уже существует!</p>");
+				return false; 
 			}
-			
-			if($password == $password_confirm){
-				$sql = "INSERT INTO users (login, passw) VALUES ('%s', '%s')";
-				$query = sprintf($sql, $login, $password);
-				$result = mysqli_query($link, $query) or die(mysqli_error($link));
-				return header('Location: /');
-				} else {
-						print("Пароли не совпадают!");
-						return false;}	
-		} else return false; 
-	}
+		}
+
+		/*
+		 * Если логин и пароль не соответствуют требованиям безопасности, функция
+		 * прекращет работу. Соответствующие сообщения выводятся с помощью
+		 * скрипта валидации на jQuery
+		 */
+			if(!preg_match('/^[a-z0-9_-]{3,15}$/', $login)){
+				//print ("Неверный формат логина");
+				return false; 				
+		} else if(!preg_match('/^[a-z0-9_-]{6,15}$/', $password)){
+				//print ("Неверный формат пароля");
+				return false; 				
+		}			
+		
+		/*
+		 * Если пароль и подтверждение пароля совпадают, то подготавливается и выполнятеся запрос
+		 * к базе данных, который вставляет новую запись с данными, полученными от пользователя
+		 */
+		if($password == $password_confirm){
+			$sql = "INSERT INTO users (login, passw) VALUES ('%s', '%s')";
+			$query = sprintf($sql, $login, $password);
+			$result = mysqli_query($link, $query) or die(mysqli_error($link));
+			return header('Location: /');
+			} else {
+					print ("<p style = 'color: red; text-align: center'>Пароли не совпадают!</p>");
+					return false;}	
+	} else return false; 
+}
 	
 
 /* Добавление отзыва */
-	function setFeedback($title, $message, $link){
-		if(isset($_SESSION['id']) && isset($title) && isset($message)){
-			$title =  mysqli_real_escape_string($link, trim($title));
-			$message =  mysqli_real_escape_string($link, trim($message));
-			$sess_id = (int)$_SESSION['id'];
-			
-			$sql = "INSERT INTO feedbacks (userid, title, message) VALUES ('%d', '%s', '%s')";
-			$query = sprintf($sql, $sess_id, $title, $message);
-			$result = mysqli_query($link, $query) or die(mysqli_error($link));
-			return header('Location: index.php?page=feed');
-		} 
-	}
+function setFeedback($title, $message, $link){
+	
+	/* Если аргументы определены -  */
+	if(isset($_SESSION['id']) && isset($title) && isset($message)){
+		
+		/* заголовок и сообщение "очищаются" от "лишних" символов, а id явно приводится к целому числу */
+		$title =  mysqli_real_escape_string($link, trim($title));
+		$message =  mysqli_real_escape_string($link, trim($message));
+		$sess_id = (int)$_SESSION['id'];
+		
+
+		/* 
+		 * Подготовка и выполнение запроса к базе данных. В таблицу feedbacks заносятся
+		 * заголовок сообщения, сообщение и id пользователя, который оставил сообщение
+		 */	
+		$sql = "INSERT INTO feedbacks (userid, title, message) VALUES ('%d', '%s', '%s')";
+		$query = sprintf($sql, $sess_id, $title, $message);
+		$result = mysqli_query($link, $query) or die(mysqli_error($link));
+		
+		/* Перенаправление на страницу со списком всех сообщений пользователей */
+		return header('Location: index.php?page=feed');
+	} 
+}
+
 /* Отображение всех отзывов */	
-	function getFeedbacks($link){
-		$sql = "SELECT login, title, message, datetime FROM users, feedbacks WHERE users.id = feedbacks.userid";
-		$result = mysqli_query($link, $sql);
-		$allFeeds = mysqli_fetch_all($result, MYSQLI_ASSOC);
-		return $allFeeds;
-	}
+function getFeedbacks($link){
+	/* Подготовка и выполнение запроса к базе данных. */
+	$sql = "SELECT login, title, message, datetime FROM users, feedbacks WHERE users.id = feedbacks.userid";
+	$result = mysqli_query($link, $sql);
+	$allFeeds = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	
+	/* Функция возвращает ассоц. массив со всеми отзывами */
+	return $allFeeds;
+}
 
 /* Парсинг  погоды */
 function deadWeather(){
