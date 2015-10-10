@@ -1,27 +1,24 @@
 {if isset($login)}
 	<form action = "index.php?action=feedback" method = "post" name = "feedback" class = "feedform" onsubmit= " return validate();">
-		<label>Заголовок отзыва:<br>
+		
+		<label><span class = "req_stars">* </span>Заголовок отзыва:<br>
 			<input type = "text" name = "title" class = "title_field" autofocus><br>
 			<div id = "title_error" class = "feed_error"></div>
-		</label>
-		<label>Отзыв:<br>
-			<textarea name = "message"></textarea>
 		</label><br>
-		<input type = "submit" name = "submitbtn" value = "Отправить отзыв">	
+
+		<label><span class = "req_stars">* </span>e-mail: <br>
+			<input type="text" name = "email" cass = "">
+			<div id = "email_error" class = "feed_error"></div>
+		</label><br>
+		
+		<label><span class = "req_stars">* </span>Отзыв: <br>
+			<textarea name = "message"></textarea>
+			<div id = "message_error" class = "feed_error"></div>
+		</label><br>
+		
+		<input type = "submit" name = "submitbtn" value = "Отправить отзыв">
+		<p><span class = "req_stars">* </span> - Поля, обязательные для заполнения</p>	
 	</form>
 
-	<script type="text/javascript">
-	function validate(){
-		var valide = true;
-		var t_error = document.getElementById("title_error");
-		if(document.feedback.title.value == ""){
-			t_error.innerHTML = "Alarm!";
-			valide = false;
-		}
-		return valide;
-	}
-	</script>
-
-​
-	
+	<script src = "/themes/theme01/templates/validator.js"></script>
 {/if}
