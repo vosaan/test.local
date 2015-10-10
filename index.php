@@ -100,8 +100,9 @@ if($action == "auth"){
 	 * и выполняется перенаправление на страницу с отзывами
 	 */
 	if(isset($_POST['title']) &&
-		 isset($_POST['message'])){
-			if(setFeedback($_POST['title'], $_POST['message'], $link)){
+	   isset($_POST['message']) &&
+	   isset($_POST['email'])){
+			if(setFeedback($_POST['title'], $_POST['message'], $_POST['email'], $link)){
 				header('Location: index.php?page=readfeed');
 			}
 	}	
