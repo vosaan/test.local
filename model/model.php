@@ -133,18 +133,17 @@ function setFeedback($title, $message, $email, $link){
 		$message =  mysqli_real_escape_string($link, trim($message));
 		$sess_id = (int)$_SESSION['id'];
 		
-
+		if(preg_match('/^([a-z0-9_\.-]+)@([a-z0-9_\.-]+)\.([a-z\.]{2,12})$/', $email)){
 		/* 
 		 * Подготовка и выполнение запроса к базе данных. В таблицу feedbacks заносятся
-		 * заголовок сообщения, сообщение и id пользователя, который оставил сообщение
+		 * заголовок сообщения, сообщение, e-mail и id пользователя, который оставил сообщение
 		 */	
 		$sql = "INSERT INTO feedbacks (userid, title, email, message) VALUES ('%d', '%s', '%s', '%s')";
 		$query = sprintf($sql, $sess_id, $title, $email, $message);
 		$result = mysqli_query($link, $query) or die(mysqli_error($link));
-		
-		/* Перенаправление на страницу со списком всех сообщений пользователей */
 		return true;
-	} 
+		} else return false;
+	} else return false;
 }
 
 /* Отображение всех отзывов */	
