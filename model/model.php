@@ -122,13 +122,14 @@ function registration($login, $password, $password_confirm, $link){
 	
 
 /* Добавление отзыва */
-function setFeedback($title, $message, $link){
+function setFeedback($title, $message, $email, $link){
 	
 	/* Если аргументы определены -  */
-	if(isset($_SESSION['id']) && isset($title) && isset($message)){
+	if(isset($_SESSION['id']) && isset($title) && isset($message) && isset($email)){
 		
-		/* заголовок и сообщение "очищаются" от "лишних" символов, а id явно приводится к целому числу */
+		/* заголовок, e-mail и сообщение "очищаются" от "лишних" символов, а id явно приводится к целому числу */
 		$title =  mysqli_real_escape_string($link, trim($title));
+		$email =  mysqli_real_escape_string($link, trim($email));
 		$message =  mysqli_real_escape_string($link, trim($message));
 		$sess_id = (int)$_SESSION['id'];
 		
@@ -137,19 +138,19 @@ function setFeedback($title, $message, $link){
 		 * Подготовка и выполнение запроса к базе данных. В таблицу feedbacks заносятся
 		 * заголовок сообщения, сообщение и id пользователя, который оставил сообщение
 		 */	
-		$sql = "INSERT INTO feedbacks (userid, title, message) VALUES ('%d', '%s', '%s')";
-		$query = sprintf($sql, $sess_id, $title, $message);
+		$sql = "INSERT INTO feedbacks (userid, title, email, message) VALUES ('%d', '%s', '%s', '%s')";
+		$query = sprintf($sql, $sess_id, $title, $email, $message);
 		$result = mysqli_query($link, $query) or die(mysqli_error($link));
 		
 		/* Перенаправление на страницу со списком всех сообщений пользователей */
-		return header('Location: index.php?page=feed');
+		return true;
 	} 
 }
 
 /* Отображение всех отзывов */	
 function getFeedbacks($link){
 	/* Подготовка и выполнение запроса к базе данных. */
-	$sql = "SELECT login, title, message, datetime FROM users, feedbacks WHERE users.id = feedbacks.userid";
+	$sql = "SELECT login, title, email, message, datetime FROM users, feedbacks WHERE users.id = feedbacks.userid";
 	$result = mysqli_query($link, $sql);
 	$allFeeds = mysqli_fetch_all($result, MYSQLI_ASSOC);
 	
