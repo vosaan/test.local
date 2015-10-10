@@ -34,3 +34,25 @@ function validate(){
 
   return valide;
 }
+
+function reg_validate(){
+  var reg_valide = true;
+  var err_mess1 = "Это поле должно быть заполнено!"
+
+  if(document.reg.reg_form_login.value == ""){
+    document.getElementById("reg_l_error").innerHTML = err_mess1;
+    reg_valide = false;
+  }
+
+  if(document.reg.reg_form_password.value == ""){
+    document.getElementById("reg_p_error").innerHTML = err_mess1;
+    reg_valide = false;
+  }
+
+  if(document.reg.reg_form_password_confirm.value == ""){
+    document.getElementById("reg_p_c_error").innerHTML = err_mess1;
+    reg_valide = false;
+  }   
+
+  return reg_valide;
+}
