@@ -169,6 +169,15 @@ margin-top: 0;
 }
 
 /**************************************/
+.error input,
+.error textarea {
+  border: 1px solid red;
+}
+    
+.error {
+  color: red;
+}
+
 .valid_error{
   color: red;
   font-size: 10px;
@@ -184,5 +193,4 @@ margin-top: 0;
 .req_text{
   
   font-size: 10px;
-  
 }
