@@ -1,23 +1,23 @@
 {if isset($login)}
-	<form action = "index.php?action=feedback" method = "post" name = "feedback" class = "feedform" onsubmit= "return validate();">
+	<form action = "index.php?action=feedback" method = "post" name = "feedback" class = "feedform" onsubmit= "return feed_validate();">
 		
 		<label><span class = "req_stars">* </span>Заголовок отзыва:<br>
 			<input type = "text" name = "title" class = "title_field" autofocus><br>
-			<div id = "title_error" class = "feed_error"></div>
+			<div id = "title_error" class = "valid_error"></div>
 		</label><br>
 
 		<label><span class = "req_stars">* </span>e-mail: <br>
 			<input type="text" name = "email" cass = "">
-			<div id = "email_error" class = "feed_error"></div>
+			<div id = "email_error" class = "valid_error"></div>
 		</label><br>
 		
 		<label><span class = "req_stars">* </span>Отзыв: <br>
 			<textarea name = "message"></textarea>
-			<div id = "message_error" class = "feed_error"></div>
+			<div id = "message_error" class = "valid_error"></div>
 		</label><br>
 		
 		<input type = "submit" name = "submitbtn" value = "Отправить отзыв">
-		<p><span class = "req_stars">* </span> - Поля, обязательные для заполнения</p>	
+		<p class = "req_text"><span style = "color:red; vertical-align: sub;">*</span> - Поля, обязательные для заполнения</p>	
 	</form>
 
 	<script src = "/themes/theme01/templates/validator.js"></script>
