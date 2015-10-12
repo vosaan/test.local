@@ -1,9 +1,15 @@
-<form method = "POST" action = "index.php?action=auth" class = "login_form">
-	Логин:<br>
-	<input type = 'text' name = "auth_form_login" class = "auth_field" autofocus><br>
+<form method = "POST" action = "index.php?action=auth" class = "login_form" name = "login">
+	<label>Логин:<br>
+	<input type = 'text' name = "auth_form_login" class = "auth_field" autofocus>
+	</label><br>
+	<label>
 	Пароль:<br>
-	<input type = 'password' name = "auth_form_password" class = "auth_field"><br>
-	<input type = 'submit' name = "auth_form_btn" class = "auth_field" value = 'Войти'>
+	<input type = 'password' name = "auth_form_password" class = "auth_field">
+	</label><br>
+	
+	<input type="button" onclick="login_validate(this.form)" value="Войти">
+
 	<p style = "text-align: center"><a href="index.php?action=reg">Регистрация</a></p>
 </form>
 
+<script src = "/themes/theme01/templates/validator2.js"></script>
