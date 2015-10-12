@@ -69,8 +69,8 @@ if($action == "auth"){
 			 */
 			header("Location: index.php?page=weather");
 		
-			/* иначе перенаправляется на страницу авторизации */
-		} else header("Location: index.php");
+			/* иначе перенаправляется на страницу с текстом ошибки */
+		} else $smarty->display('fail.html');
 	}
 } else if($action == "logout"){
 	
