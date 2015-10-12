@@ -83,3 +83,22 @@
         document.forms.reg.submit();
       }
     }
+
+    function login_validate(login){
+      window.validated = true;
+      var elems = login.elements;
+
+      resetError(elems.auth_form_login.parentNode);
+      if (!elems.auth_form_login.value) {
+        showError(elems.auth_form_login.parentNode, ' Укажите логин!');
+      }
+
+      resetError(elems.auth_form_password.parentNode);
+      if (!elems.auth_form_password.value) {
+        showError(elems.auth_form_password.parentNode, ' Укажите логин!');
+      }
+      
+      if(window.validated) {
+        document.forms.login.submit();
+      }              
+    }
