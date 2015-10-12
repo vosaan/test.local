@@ -104,19 +104,20 @@ footer {
 /* * //СТРУКТУРА СТРАНИЦЫ * */
 
 /* * Форма авторизации * */
-.login_form, .reg_form{
+/*.login_form, .reg_form{
 margin: 0 auto;
 border: 1px solid #ddd;
 border-radius: 5px;
 width: 200px;
 margin-top: 100px;
 padding: 20px;
-}
+}*/
 
-.auth_field{
+/*.auth_field{
 width: 200px;
 margin-top: 4px;
 }
+*/
 
 .feed_user_date{
 color: #aaa;
