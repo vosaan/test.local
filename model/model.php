@@ -159,9 +159,13 @@ function getFeedbacks($link){
 
 /* Парсинг  погоды */
 function deadWeather(){
-	/* Объект со страницей */
-	$html = file_get_html('https://www.gismeteo.ua/weather-zaporizhzhya-5093/');
-	
+	/* Объект со страницей ($html) */
+	$page = curl_init('https://www.gismeteo.ua/weather-zaporizhzhya-5093/');
+    curl_setopt($page, CURLOPT_RETURNTRANSFER, true);
+    $data = curl_exec($page);    
+        
+	$html = str_get_html($data);
+		
 	/*
 	 * Функция "отсекает" все символы в строке после заданного (используется для того,
 	 * чтобы отделить показатели погоды в метрической системе и отсеч показатели в другх системах)

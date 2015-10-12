@@ -2,12 +2,12 @@
 	<form action = "index.php?action=feedback" method = "post" name = "feedback" class = "feedform">
 		
 		<label><span class = "req_stars">* </span>Заголовок отзыва:<br>
-			<input type = "text" name = "title" class = "title_field" autofocus>
+			<input type = "text" name = "title" class = "title_field" autofocus onkeypress="if(event.keyCode==13) feed_validate(this.form);">
 			
 		</label><br>
 
 		<label><span class = "req_stars">* </span>e-mail: <br>
-			<input type="text" name = "email" cass = "">
+			<input type="text" name = "email" onkeypress="if(event.keyCode==13) feed_validate(this.form);">
 			
 		</label><br>
 		

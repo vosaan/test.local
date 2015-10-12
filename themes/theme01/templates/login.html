@@ -1,15 +1,17 @@
-<form method = "POST" action = "index.php?action=auth" class = "login_form" name = "login">
-	<label>Логин:<br>
-	<input type = 'text' name = "auth_form_login" class = "auth_field" autofocus>
-	</label><br>
-	<label>
-	Пароль:<br>
-	<input type = 'password' name = "auth_form_password" class = "auth_field">
-	</label><br>
-	
-	<input type="button" onclick="login_validate(this.form)" value="Войти">
+<div class="auth_wrap">
+	<form method = "POST" action = "index.php?action=auth" name = "login">
+		<label>Логин:<br>
+		<input type = 'text' name = "auth_form_login" class = "form_field" autofocus onkeypress="if(event.keyCode==13) login_validate(this.form);">
+		</label><br>
+		<label>
+		Пароль:<br>
+		<input type = 'password' name = "auth_form_password" class = "form_field" onkeypress="if(event.keyCode==13) login_validate(this.form);">
+		</label><br>
+		
+		<input type="button" onclick="login_validate(this.form)" value="Войти" class = "form_field">
 
-	<p style = "text-align: center"><a href="index.php?action=reg">Регистрация</a></p>
-</form>
+		<p style = "text-align: center"><a href="index.php?action=reg">Регистрация</a></p>
+	</form>
+</div>
 
 <script src = "/themes/theme01/templates/validator2.js"></script>
